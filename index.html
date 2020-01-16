@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <script>
+    
+    
+    //O functie "getDigits" care primeste un sir de caractere si returneaza cifrele din sirul respectiv
+        
+        function getDigits(sirCaractere){
+            
+
+           
+            
+            var numbers = "";
+            
+            for(var i = 0; i<sirCaractere.length; i++){
+                
+                
+              
+                
+                if(isNaN(sirCaractere[i])===false){
+                   
+                    console.log(sirCaractere[i]);
+                   numbers = numbers+sirCaractere[i];
+                   }
+            }
+            
+
+                   
+                   return parseFloat(numbers);
+        }
+    
+    
+ //O functie "getLetters" care primeste un sir de caractere si returneaza doar literele din sirul respectiv
+        
+        function getLetters(sirCaractere){
+            
+             
+            var letters = "";
+            
+            for(var i = 0; i<sirCaractere.length; i++){
+                
+                
+              
+                
+                if(isNaN(sirCaractere[i])===true){
+                   
+                    console.log(sirCaractere[i]);
+                   letters = letters+sirCaractere[i];
+                   }
+            }
+            
+
+                   
+                   return letters;
+            
+        }
+        
+        
+        //O functie "getFirst5Letters" care primeste un sir de caractere si returneaza primele 5 litere(daca exista)
+        
+        function getFirst5Letters(sirCaractere){
+            
+            if(sirCaractere.length>=5){
+                
+                return sirCaractere.substring(0,5);
+            }
+            
+            
+        }
+    
+    
+    
+  //O functie "concatenate" care primeste o lista de siruri de caractere si returneaza sirurile concatenate
+    
+    
+        function concatenate(listaSiruriCaracter){
+            
+            var sirConcat = "";
+            
+            for(var i=0; i< listaSiruriCaracter.length; i++){
+                
+                sirConcat = sirConcat+listaSiruriCaracter[i];
+            }
+            
+            return sirConcat;
+        }
+    
+    
+//O functie "getAllDigits" care primeste o lista de siruri de caractere si returneaza cifrele din toate sirurile
+    
+       function getAllDigits(listaSiruri){
+           
+           var allDigits = "";
+           
+           for(var i = 0; i<listaSiruri.length; i++){
+               
+               allDigits = allDigits+getDigits(listaSiruri[i]);
+           }
+           
+           return parseFloat(allDigits);
+       }
+        
+        
+        
+//O functie "invertAllStrings" care primeste o lista de siruri de caractere si returneaza lista de siruri de caractere inversate
+        
+        function invertAllStrings(str){
+            
+
+            var i = str.length-1;
+            var j = 0;
+            
+            var str2 = [];
+            
+            var invertedStr = "";
+            
+            while(i>=0){
+                
+                str2[j] = str[i];
+
+                
+                i--;
+                j++;
+                  
+                
+            }
+            
+            
+            for(var k = 0; k<str2.length; k++){
+                
+                invertedStr = invertedStr+str2[k];
+            }
+            
+            return invertedStr;
+            
+        }
+        
+        
+//Calculeaza factorialul unui numar ("factorial")        
+
+    function factorial(num) {
+ 
+  var result = num;
+   
+  if (num === 0 || num === 1) 
+    return 1; 
+ 
+
+  while (num > 1) { 
+    num--; 
+    result = result * num; 
+   
+  }
+     
+
+  return result; 
+}    
+  
+        
+    //Calculeaza cel mai mare divizor comun al 2 numere ("cmmdc")
+        
+        function cmmdc(x, y) {
+            
+            
+  if ((typeof x !== 'number') || (typeof y !== 'number')) 
+    return false;
+  x = Math.abs(x);
+  y = Math.abs(y);
+  while(y) {
+    var t = y;
+    y = x % y;
+    x = t;
+  }
+  return x;
+}
+        
+        
+        
+        
+//Calculeaza cel mai mic multiplu comun al 2 numere ("cmmmc")
+        
+    function cmmmc(min, max) {
+    function range(min, max) {
+        var arr = [];
+        for (var i = min; i <= max; i++) {
+            arr.push(i);
+        }
+        return arr;
+    }
+
+    function gcd(a, b) {
+        return !b ? a : gcd(b, a % b);
+    }
+
+    function lcm(a, b) {
+        return (a * b) / gcd(a, b);   
+    }
+
+    var multiple = min;
+    range(min, max).forEach(function(n) {
+        multiple = lcm(multiple, n);
+    });
+
+    return multiple;
+}    
+        
+       
+        function divizori(num){
+            
+            var divizoriNumar = [];
+            
+            for(var i = 2; i<num;i++){
+                
+         
+                
+                if(num%i===0){
+                   
+                    
+  
+                   divizoriNumar.push(i);
+                    
+                   }
+                
+            }
+            
+            return divizoriNumar;
+
+
+}
+        
+        
+        
+//O functie care verifica daca un numar este palindrom (ex: 121, 1234321) ("palindrom")
+        
+        
+                function invers(num) {
+  return (
+    parseFloat(
+      num
+        .toString()
+        .split('')
+        .reverse()
+        .join('')
+    ) * Math.sign(num)
+  )                 
+}
+        
+        
+        
+             function palindrom(num){
+            
+            var isPalindrom = false;
+            
+            var num1 = invers(num);
+            
+            console.log(num1+" Num1 function");
+            
+            if(num1===num){
+                
+                isPalindrom = true;
+            }
+            
+            return isPalindrom;
+        }
+        
+        
+    
+        //O functie care sorteaza numerele pare dintr-un sir de numere primit ca parametru. ("sort")
+        
+        function sort(sirNumere){
+            
+            
+            sirNumere.sort(function(a, b){
+    return a - b;
+});
+        }
+        
+        
+        
+    //O functie care primeste ca parametru un array de numere. Aceasta sorteaza ascendent numerele pare si descendent numerele impare, in cadrul aceluiasi array primit ca parameru. ("sortAscDesc")    
+        
+        
+        function sortAscDesc(arr){
+            
+           var arrPos = [];
+           var arrNeg = [];
+            
+           for(var i = 0; i<arr.length; i++){
+               
+               if(arr[i]%2===0){
+                   
+                   arrPos.push(arr[i]);
+               }else{
+                   
+                   arrNeg.push(arr[i]);
+               }
+           }
+            
+            arrPos.sort(function(a, b){return a-b});
+            
+            arrNeg.sort(function(a, b){return b-a});
+            
+            
+
+            
+            var arrNew = arrPos.concat(arrNeg);
+            
+            
+            return arrNew;
+            
+        }
+        
+//O functie care primeste 2 parametri(un array si un numar). Folosind binary search verificati daca numarul primit ca parametru se gaseste in array. ("binarySearch")
+        
+        function binarySearch(array, target){
+            
+           
+ 
+  let startIndex = 0;
+  let endIndex = array.length - 1;
+
+  while(startIndex <= endIndex) {
+
+    let middleIndex = Math.floor((startIndex + endIndex) / 2);
+
+    if(target === array[middleIndex]) {
+      return console.log("Target was found at index " + middleIndex);
+    }
+
+    if(target > array[middleIndex]) {
+      console.log("Searching the right side of Array")
+
+      startIndex = middleIndex + 1;
+    }
+
+    if(target < array[middleIndex]) {
+
+      console.log("Searching the left side of array")
+      endIndex = middleIndex - 1;
+    }
+
+    else {
+      console.log("Not Found this loop iteration. Looping another iteration.")
+    }
+  }
+
+  console.log("Target value not found in array");
+            
+            
+        }
+        
+        
+        
+   //O functie care implementeaza binary search pentru a verifica daca un numar se regaseste intr-un array. Dupa ce se termina executia functiei trebuie sa returnati de cate ori s-a apelat functia recursiv ("countBinarySearch")
+        
+     function countBinarySearch(array, target){
+      
+         var counter = 0;
+         
+  let startIndex = 0;
+  let endIndex = array.length - 1;
+
+  while(startIndex <= endIndex) {
+
+    let middleIndex = Math.floor((startIndex + endIndex) / 2);
+
+    if(target === array[middleIndex]) {
+        
+      counter++;    
+      return console.log("Target was found at index " + middleIndex);
+    }
+
+    if(target > array[middleIndex]) {
+        
+        counter++; 
+      console.log("Searching the right side of Array")
+
+      startIndex = middleIndex + 1;
+    }
+
+    if(target < array[middleIndex]) {
+
+        counter++; 
+      console.log("Searching the left side of array")
+      endIndex = middleIndex - 1;
+    }
+
+    else {
+      console.log("Not Found this loop iteration. Looping another iteration.")
+    }
+  }
+
+  console.log("Target value not found in array");
+         
+         return counter;
+     }   
+        
+    
+    </script>
+    
+    
+
+    
+</head>
+<body>
+    
+
+
+</body>    
+</html>
