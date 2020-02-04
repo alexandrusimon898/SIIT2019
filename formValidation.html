@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  
+    body{
+        width: 70%;
+        margin: auto;
+    }
+    
+    .banner{
+        
+        text-align: center;
+    }
+    
+    .container{
+        
+        display: flex;
+        justify-content: space-around;
+    }
+    .formContainer{
+        
+        width: 50%;
+    }
+    
+    .imgContainer{
+        
+       width: 50%; 
+    }
+    
+    .imgContainer img{
+        
+        width: 100%;
+    }
+    
+    .wrong{
+        
+  border-style: solid;
+  border-color: red;
+    color: red;    
+    }
+    
+    .correct{
+        
+        background-color: green;
+        color:white;
+    }
+    
+    .formContainer{
+        
+        text-align: center;
+    }
+    .banner{
+        
+        font-size: 20px;
+    }
+    
+    .invisible{
+        
+        display: none;
+    }
+    
+    .visible{
+        
+        display: block;
+    }
+    
+    .select-menu{
+        
+        width: 50%;
+        margin: auto;
+    }
+
+    
+    
+    
+</style> 
+    <script src="https://kit.fontawesome.com/76220af2ad.js" crossorigin="anonymous"></script>
+    <script>
+        
+        function noNumber(str){
+            
+            var checked = true;
+            
+            for(var i = 0; i<str.length; i++){
+                
+                if(Number.isNaN(str[i]==true) ){
+                    checked = false;
+                }
+            }
+            
+            return checked;
+        }
+        
+        function checkLength(str){
+            var checked = true;
+            if(str.length<1){
+                checked = false;
+            }
+            
+            return checked;
+        }
+        
+        var submitAttempted = 0;
+
+
+        function fieldUpdate(idx){
+            
+            console.log("function field called element "+idx);
+            
+            if(idx==1&&window.submitAttempted==1){
+                
+                var firstName =  document.querySelector("#firstname");
+                 if(noNumber(firstName)==false||checkLength(firstName)==false){
+                
+                firstName.classList.add('wrong');
+                
+              
+        
+     
+            }else{
+                
+                firstName.classList.remove('wrong');
+            }
+                
+            }
+            
+            
+            
+                        if(idx==2&&window.submitAttempted==1){
+                
+                var lastName =  document.querySelector("#lastname");
+                 if(noNumber(lastName)==false||checkLength(lastName)==false){
+                
+                lastName.classList.add('wrong');
+                
+              
+        
+     
+            }else{
+                
+                lastName.classList.remove('wrong');
+            }
+                
+            }
+            
+                                    if((idx==3||idx==4||idx==5)&&window.submitAttempted==1){
+                
+
+            var male = document.getElementById("male").checked;
+            var female = document.getElementById("female").checked;
+            var other = document.getElementById("other").checked;
+                                        
+            
+            
+            if(male ==true|| female==true||other==true){
+                
+                
+                document.querySelector(".select-menu").classList.remove('wrong');
+            }
+              else{
+                
+                document.querySelector(".select-menu").classList.add('wrong');
+            }
+                                    }
+            
+        
+                                if(idx==6&&window.submitAttempted==1){
+                
+                var message = document.querySelector("[name='message']").value;
+                 if(checkLength(message)==false){
+                
+                document.querySelector("#message").classList.add('wrong');
+                
+              
+        
+     
+            }else{
+                
+                document.querySelector("#message").classList.remove('wrong');
+            }
+                
+            
+        }
+        }
+        
+        
+        
+        function resetForm(){
+            
+            document.querySelector("[name='firstname']").value="";
+            document.querySelector("[name='lastname']").value="";
+            
+            document.getElementById("male").checked= false;
+            document.getElementById("female").checked=false;
+            document.getElementById("other").checked= false;
+            
+            document.querySelector("[name='message']").value="";
+            
+            wait(2000);
+
+         
+        }
+        
+        function wait(ms)
+{
+var d = new Date();
+var d2 = null;
+do { d2 = new Date(); }
+while(d2-d < ms);
+}
+        
+ 
+    
+        function formSubmitted(event){
+            event.preventDefault();
+            
+           var firstNameOK = true;
+           var lastNameOK =true;
+           var genderOK =true;
+           var messageOK= true;
+            
+            var firstName =  document.querySelector("[name='firstname']").value;
+            var lastName = document.querySelector("[name='lastname']").value;
+            
+            var male = document.getElementById("male").checked;
+            var female = document.getElementById("female").checked;
+            var other = document.getElementById("other").checked;
+            
+            if(male ==true|| female==true||other==true){
+                genderOK = true;
+            }else{
+                genderOK = false;
+                document.querySelector(".select-menu").classList.add('wrong');
+                
+            }
+            
+            var message = document.querySelector("[name='message']").value;
+            
+
+            
+            if(noNumber(firstName)==false||checkLength(firstName)==false){
+                
+                firstNameOK = false;
+                document.querySelector("#firstname").classList.add('wrong');
+                
+              
+        
+     
+            }
+            
+            if(noNumber(lastName)==false||checkLength(lastName)==false){
+                
+                lastNameOK = false;
+                document.querySelector("#lastname").classList.add('wrong');
+            }
+            
+           if(checkLength(message)==false){
+                
+               messageOK = false;
+               document.querySelector("#message").classList.add('wrong');
+               
+            }
+            
+   
+            
+ 
+            
+            if(firstNameOK==true&&lastNameOK&&genderOK==true&&messageOK==true){
+                
+                document.querySelector(".banner").innerHTML = "Thank you for contacting us "+firstName+" !";
+                document.querySelector(".banner").classList.remove('invisible');
+                document.querySelector(".banner").classList.add('visible');
+                
+                wait(2000);
+                resetForm();   
+                window.submitAttempted = 0;
+                
+    
+
+            }else{
+                
+                console.log("form incorrect");
+                window.submitAttempted = 1;
+            
+            }
+            
+        }
+    
+    </script>
+</head>
+<body>
+
+    <br>
+    <br>
+    <div class="banner correct invisible"><i class="fas fa-check-circle"></i>&ensp;Thank you for contacting us Alexandra.</div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+    <div class="formContainer">
+<form name="myForm" onsubmit="formSubmitted(event);">
+  First name:<br>
+  <input type="text" name="firstname" id="firstname" onchange="fieldUpdate(1);"><br>
+  Last name:<br>
+  <input type="text" name="lastname" id="lastname" onchange="fieldUpdate(2);"><br>
+<br>    
+  Gender:<br>
+<br> 
+    <div class="select-menu">
+  <input type="radio" name="gender" value="male" id="male" onchange="fieldUpdate(3);">Male<br>
+  <input type="radio" name="gender" value="female" id="female" onchange="fieldUpdate(4);">Female<br>
+  <input type="radio" name="gender" value="other" id="other" onchange="fieldUpdate(5);">Other<br> 
+    </div>    
+<br>    
+  <textarea name="message" id="message" rows="10" cols="30" onchange="fieldUpdate(6);"></textarea><br>  
+  <input type="submit">         
+</form>
+   </div> 
+    <div class="imgContainer">
+     <img src="https://r-cf.bstatic.com/images/hotel/max1024x768/221/221741543.jpg">   
+        
+    </div>    
+   </div> 
+</body>    
+
+</html>
