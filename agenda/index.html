@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="styles.css">  
+<script src="script.js"></script>    
+</head>
+    
+<body onload="draw()">
+   
+    <div class="agenda-wrapper">
+    
+    <div class="title-agenda">
+    <h1>Agenda</h1>
+    </div>
+    <div class="name-phone-input">
+    
+    <form onsubmit="formSubmitted(event);" class="inline-form">
+    <label>Nume</label>    
+    <input type="text" name="fname"><br>
+    <label>Telefon</label>    
+    <input type="text" name="fnumber"><br>
+    <input class="input-button" id="inputButton" type="submit" value="Submit">
+    </form>
+    
+    </div>
+    <br>
+    <br>
+    <div class="agenda-holder">
+    
+        <div class="header">
+        <h2>Nume</h2>
+        <h2 class="title">Telefon</h2>
+        </div>
+        <div class="contact-holder">
+       
+        
+        </div>
+    
+    </div>
+    </div>
+</body>    
+
+</html>
