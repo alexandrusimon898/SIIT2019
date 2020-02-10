@@ -1,0 +1,126 @@
+body{
+    
+    width: 50%;
+    margin: auto;
+}
+
+h1{
+    text-align: center;
+}
+h2{
+    
+    display: inline-block;
+}
+
+input{
+    
+    display: inline-block;
+}
+
+.agenda-holder{
+    
+    text-align: center;
+    width: 70%;
+    margin: auto;
+}
+
+.contact{
+    
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.header{
+    
+    display: flex;
+    justify-content: space-between;
+    width: 37%;
+    
+}
+
+.info{
+    
+    padding-left: 3%;
+    display: flex;
+    justify-content: space-between;
+    width: 35%;
+}
+
+.buttons{
+    
+    width: 25%;
+}
+
+.inline-form{
+    
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;    
+  
+}
+
+
+
+.inline-form label {
+  margin: 5px 10px 5px 0;
+}
+
+.inline-form input{
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+
+.input-button{
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  
+}
+
+#inputButton{  
+    
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;    
+
+}
+
+#inputButton:hover{
+    background-color: royalblue;
+    color: white;
+}
+
+
+.fbutton{
+    
+ padding: 2%;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white; 
+}
+
+.fbutton:hover{
+    
+      background-color: royalblue;
+}
+
+.title-agenda{
+    
+    width: 70%;
+    margin: auto;
+}
+
+.agenda-wrapper{
+    
+    
+    border: 2px solid dodgerblue;
+    border-radius: 25px;
+}
+
