@@ -21,6 +21,8 @@ contacts.push(contact1);
 contacts.push(contact2);
 contacts.push(contact3);
 
+draw();
+
 function formSubmitted(event){
     
     event.preventDefault();
