@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+  <title>Shopping List</title>  
+<style>
+
+    body{
+        
+        width: 40%;
+        margin: auto;
+        font-family: 'Oswald', sans-serif;
+    }
+    
+    .main-container{
+        
+        padding: 3%;
+        border-color: black;
+        border: solid 2px;
+        border-radius: 5px;
+    }
+    
+    form{
+        
+        display: flex;
+        justify-content: flex-start;
+        vertical-align: middle;
+    }
+    
+    #item{
+        
+        margin-right: 2%;
+    }
+    
+    h2{
+        
+        display: inline-block;
+        font-size: 20px;
+        padding-right: 10%;
+    }
+    
+    .item{
+        
+        display:flex;
+        justify-content: space-between;
+        vertical-align: middle;
+        
+    }
+    
+    .item-name{
+        
+        width: 34%;
+    }
+    
+    .item-name p{
+        
+        margin-top: 0;
+    }
+    
+    .button-holder{
+        
+        width: 66%;
+    }
+    
+    button{
+        
+        background-color:#4287f5;
+        color: white;
+    }
+    
+    button:hover{
+        
+        background-color: #87b1f5;
+    }
+    
+    .submitButtonForm{
+        
+        background-color:#4287f5;
+        color: white;
+    }
+    
+   .submitButtonForm:hover{
+        
+        background-color: #87b1f5;
+    }
+    
+    .purchased{
+        
+        text-decoration:line-through;
+    }
+    
+</style>   
+
+<script>
+   
+    class ShoppingItem{
+        
+        constructor(name, isPurchased){
+            
+            this.name=name;
+            this.isPurchased = isPurchased;
+        }
+    }
+    
+    var paine = new ShoppingItem("paine", false);
+    
+    var lapte = new ShoppingItem("lapte", false);
+    
+
+    
+    
+    var shoppingItems = [];
+    var items = document.querySelectorAll(".item-name");
+    
+    shoppingItems.push(new ShoppingItem("carne",false));
+    
+  
+    shoppingItems.push(lapte);
+    shoppingItems.push(paine);
+    
+    
+    
+    
+function itemAdd(event){
+    
+    event.preventDefault();
+    
+    
+    		var newItem = new ShoppingItem(
+					document.querySelector("[name='name']").value, 
+                    false
+		
+				);
+    
+  window.shoppingItems.push(newItem);
+    
+    draw();
+    
+    document.querySelector("[name='name']").value = "";
+    
+}
+  
+    
+function markPurchased(index){
+    
+       
+            
+            if(window.shoppingItems[index].isPurchased===true){
+                
+                return "item-name purchased";
+            }else{
+                
+                return "item-name";
+            }
+       
+}    
+    
+    
+    
+function draw(){
+    
+    
+    var str = "";
+    
+    for(var i=0;i<shoppingItems.length;i++){
+        
+        str+= `
+    <div class="item">
+    
+        <div class="${markPurchased(i)}"><p>${shoppingItems[i].name}</p></div>
+        <div class="button-holder"><button onclick="markAsBuyed(${i});">Mark as buyed</button></div>
+        
+    </div>
+        
+    `;
+        
+
+        
+        
+        document.querySelector(".itemsContainer").innerHTML=str;
+        
+        
+    }
+    
+    
+}
+    
+    
+function markAsBuyed(index){
+    
+    shoppingItems[index].isPurchased = true;
+    draw();
+    
+    
+}  
+    
+    
+function sortArrayAsc(){
+    
+    
+    shoppingItems.sort((current,next)=>{ return current.name.localeCompare(next.name)}); 
+    
+    draw();
+    
+}
+    
+function sortArrayDesc(){
+    
+    shoppingItems.sort((current,next)=>{ return current.name.localeCompare(next.name)});
+    
+    shoppingItems.reverse();
+    
+    draw();
+}
+    
+</script>    
+    
+</head>
+    
+<body onload="draw();">
+    
+    
+    <div class="main-container">
+    
+   <h1>Shopping List</h1> 
+    <br>
+    <br>
+    
+    <form onsubmit="itemAdd(event);">
+    <input type="text" name="name" id="item">
+    <input type="submit" value="Add Item" id="submitButton" class="submitButtonForm">    
+    </form>
+    <br>
+    <br>
+    <div class="button-container">
+    <button onclick="sortArrayAsc();">Sort asc</button>
+    <button onclick="sortArrayDesc();">Sort desc</button>
+    </div>
+    
+    <h2>Item Description</h2>
+    <h2>Mark as buyed</h2>
+    <div class="itemsContainer">
+
+    </div>
+    </div>    
+</body>    
+
+</html>
